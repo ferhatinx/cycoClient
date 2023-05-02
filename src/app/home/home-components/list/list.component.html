@@ -1,0 +1,69 @@
+<section class="container-fluid mt-5 pt-4 bg-warning">
+  <div class="container-fluid my-3 py-4">
+    <div class="row">
+      <div class="col-md-3">
+        
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            The current link item
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+          <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+          <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+          <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <app-bicycle-dialog-detail [gelenData]="detayModalagidecek" [gelenId]="detayModalId"></app-bicycle-dialog-detail>
+        <div class="row">
+          <div class="col-md-3 my-1" *ngFor="let item of  bicycle">
+            <div class="card" style="width: 15rem; min-height: 28rem;">
+              <img src="../../../../assets/icons/bicycle.png" width="100%" height="100%" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{item.brand}}</h5>
+                <p class="card-text">{{item.model}}</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detayModal" (click)="detayModalaGonder(item)">
+                  Detay Modal
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalBicycle"
+          [pageSize]="pageSize" [showFirstLastButtons]="showFirstLastButtons"
+          [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="pageIndex"
+          aria-label="Select page">
+        </mat-paginator>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="width: 50%;">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
